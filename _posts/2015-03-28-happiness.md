@@ -11,17 +11,3 @@ I am taking a course on the Microeconomic foundations of happiness this semester
 
 Before we start discussing the idea of happiness, we need to start the discussion about what it means to engage in any activity. 
 
-
-**Code**
-
-{% highlight c %}
-
-static void asyncEnabled(Dict* args, void* vAdmin, String* txid, struct Allocator* requestAlloc)
-{
-    struct Admin* admin = Identity_check((struct Admin*) vAdmin);
-    int64_t enabled = admin->asyncEnabled;
-    Dict d = Dict_CONST(String_CONST("asyncEnabled"), Int_OBJ(enabled), NULL);
-    Admin_sendMessage(&d, txid, admin);
-}
-
-{% endhighlight %}
