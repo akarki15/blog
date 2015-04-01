@@ -3,7 +3,7 @@ author: "Aashish"
 description: "Attempt to jot down my thoughts"
 #subheading: "Really cool blog about ... something"
 more: "read more"
-url: "akarki15.github.io"
+url: "https://akarki15.github.io"
 baseurl: "/blog" # comment out if in root directory
 
 comments:
