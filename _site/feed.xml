@@ -5,8 +5,8 @@
     <description>Attempt to jot down my thoughts</description>
     <link>https://akarki15.github.io/blog</link>
     <atom:link href="https://akarki15.github.io/blogfeed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Wed, 01 Apr 2015 21:55:38 -0400</pubDate>
-    <lastBuildDate>Wed, 01 Apr 2015 21:55:38 -0400</lastBuildDate>
+    <pubDate>Wed, 01 Apr 2015 22:15:58 -0400</pubDate>
+    <lastBuildDate>Wed, 01 Apr 2015 22:15:58 -0400</lastBuildDate>
     <generator>Jekyll v2.5.1</generator>
     
       <item>
@@ -38,9 +38,9 @@ drwxr-x---   &lt;span class=&quot;m&quot;&gt;3&lt;/span&gt; akarki15 akarki15   
 &lt;p&gt;&lt;strong&gt;How do you change the access settings?&lt;/strong&gt;&lt;/p&gt;
 
 &lt;ul&gt;
-  &lt;li&gt;chmod u+w will give &lt;em&gt;write&lt;/em&gt; rights to &lt;em&gt;users&lt;/em&gt; in the group&lt;/li&gt;
-  &lt;li&gt;chmod o+x will give &lt;em&gt;executable&lt;/em&gt; rights to &lt;em&gt;others&lt;/em&gt; in the group&lt;/li&gt;
-  &lt;li&gt;chmod a-r will take away &lt;em&gt;read&lt;/em&gt; rights to &lt;em&gt;everyone&lt;/em&gt; in the group&lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;chmod u+w&lt;/code&gt; will give &lt;em&gt;write&lt;/em&gt; rights to &lt;em&gt;users&lt;/em&gt; in the group&lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;chmod o+x&lt;/code&gt; will give &lt;em&gt;executable&lt;/em&gt; rights to &lt;em&gt;others&lt;/em&gt; in the group&lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;chmod a-r&lt;/code&gt; will take away &lt;em&gt;read&lt;/em&gt; rights to &lt;em&gt;everyone&lt;/em&gt; in the group&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;p&gt;Some switches for ls&lt;/p&gt;

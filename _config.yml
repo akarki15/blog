@@ -6,8 +6,9 @@ more: "read more"
 url: "https://akarki15.github.io"
 baseurl: "/blog" # comment out if in root directory
 
-comments:
-    disqus: "Aashish Karki"
+comments:  
+    disqus: 
+      short_name: "aashish_karki"
 #    isso: "comments.mysite.org"
 
 style:
