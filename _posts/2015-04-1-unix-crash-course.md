@@ -54,7 +54,7 @@ Some switches for ls
 {% endhighlight %}
 
 
-* `~/` refers to the root directory
+* `~/` refers to the user home directory
 
 **Using History** 
 

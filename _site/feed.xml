@@ -5,8 +5,8 @@
     <description>Attempt to jot down my thoughts</description>
     <link>https://akarki15.github.io/blog</link>
     <atom:link href="https://akarki15.github.io/blogfeed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Wed, 01 Apr 2015 22:15:58 -0400</pubDate>
-    <lastBuildDate>Wed, 01 Apr 2015 22:15:58 -0400</lastBuildDate>
+    <pubDate>Wed, 01 Apr 2015 23:01:40 -0400</pubDate>
+    <lastBuildDate>Wed, 01 Apr 2015 23:01:40 -0400</lastBuildDate>
     <generator>Jekyll v2.5.1</generator>
     
       <item>
@@ -77,7 +77,7 @@ drwxr-x---   &lt;span class=&quot;m&quot;&gt;3&lt;/span&gt; akarki15 akarki15   
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;cat ../a.java&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;ul&gt;
-  &lt;li&gt;&lt;code&gt;~/&lt;/code&gt; refers to the root directory&lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;~/&lt;/code&gt; refers to the user home directory&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;p&gt;&lt;strong&gt;Using History&lt;/strong&gt; &lt;/p&gt;
