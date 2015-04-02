@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <!-- Niklas Buschmann 2015 MIT <http://github.com/niklasbuschmann> -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+    
+    <meta name="description" content="Attempt to jot down my thoughts">
+    <title> Unix crashcourse › Musings</title>
+    <link rel="canonical" href="https://akarki15.github.io/blog/unix/shell/shellpower/2015/04/01/unix-crash-course.html">
+    <link href="/blog/main.css" rel="stylesheet" type="text/css">
+    <link href='//fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,200italic,300italic,400italic,600italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='//fonts.googleapis.com/css?family=Gentium+Basic:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css' rel='stylesheet' type='text/css'>
+    <link rel="alternate" type="application/rss+xml" title="Musings &raquo; Feed" href="/blog/feed.xml">
+    <script src="//aashish_karki.disqus.com/embed.js" async></script>
+    
+  </head>
+  <body>
+    <header>
+      <h1><a href="/blog/">Musings</a></h1>
+      <nav>
+        <ul>
+          <li><a href="/blog/">Home</a></li><li><a href="/blog/archive.html">Archive</a></li>
+        </ul>
+      </nav>
+    </header>
+    
+    
+    <article>
+      <header>
+        <h2><a href="/unix/shell/shellpower/2015/04/01/unix-crash-course.html">Unix crashcourse</a></h2>
+        <p><time datetime="2015-04-01T00:00:00-04:00">Apr 1, 2015</time> • unix, shell, and shellpower</p>
+      </header>
+      <div>
+<p>Following is a list of basic shell commands for Unix:</p>
+
+<p><strong>ls</strong></p>
+
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">ls -l</code></pre></div>
+
+<p>Outputs </p>
+
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">drwxr-x---   <span class="m">2</span> akarki15 akarki15       <span class="m">6</span> Jun  <span class="m">2</span>  <span class="m">2011</span> bin
+-rw-r-----   <span class="m">1</span> akarki15 akarki15 <span class="m">4194304</span> Apr <span class="m">22</span>  <span class="m">2014</span> block-device.data
+drwxrwxr-x  <span class="m">17</span> akarki15 akarki15    <span class="m">4096</span> Feb <span class="m">28</span>  <span class="m">2014</span> cs111
+drwxr-x---  <span class="m">19</span> akarki15 akarki15    <span class="m">4096</span> May <span class="m">28</span>  <span class="m">2014</span> cs112
+drwxr-x---   <span class="m">6</span> akarki15 akarki15     <span class="m">147</span> May <span class="m">10</span>  <span class="m">2014</span> cs-261
+drwxr-x---   <span class="m">3</span> akarki15 akarki15      <span class="m">18</span> May  <span class="m">1</span>  <span class="m">2013</span> CS281</code></pre></div>
+
+<ul>
+  <li>First column of the output is showing access rights
+    <ol>
+      <li>rwx: read, write, executable</li>
+      <li>Three sets of them for user, others in the group, and everyone</li>
+    </ol>
+  </li>
+</ul>
+
+<p><strong>How do you change the access settings?</strong></p>
+
+<ul>
+  <li>chmod u+w will give <em>write</em> rights to <em>users</em> in the group</li>
+  <li>chmod o+x will give <em>executable</em> rights to <em>others</em> in the group</li>
+  <li>chmod a-r will take away <em>read</em> rights to <em>everyone</em> in the group</li>
+</ul>
+
+<p>Some switches for ls</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Command</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>ls -a</code></td>
+      <td>shows “all” files</td>
+    </tr>
+    <tr>
+      <td><code>ls -d a*</code></td>
+      <td>Wildcard to display all files whose filename begins with a</td>
+    </tr>
+    <tr>
+      <td><code>ls -d [i-l]*</code></td>
+      <td>[i-l] is a set containing letters i through l</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>Cool things you can do with dot dot (..) and tilde (~)</strong> </p>
+
+<ul>
+  <li>.. represents the parent director. So say you are in <code>/home/aashish</code> and <code>/home</code> has another file called <code>a.java</code>. You can access it from aashish by saying </li>
+</ul>
+
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">cat ../a.java</code></pre></div>
+
+<ul>
+  <li><code>~/</code> refers to the root directory</li>
+</ul>
+
+<p><strong>Using History</strong> </p>
+
+<ul>
+  <li><code>history</code> shows list of previous shell commands used. It gave following output on my computer: </li>
+</ul>
+
+<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="m">5673</span>  ssh -Y akarki15@romulus.amherst.edu
+ <span class="m">5674</span>  <span class="nb">cd </span>Desktop/jam/blog/
+ <span class="m">5675</span>  jekyll build
+ <span class="m">5676</span>  jekyll serve</code></pre></div>
+
+<ul>
+  <li>Run a certain numbered command by <code>!&lt;number of the command&gt;</code>. For exmaple <code>!5676</code> will run <code>jekyll serve</code>. </li>
+</ul>
+
+<p><strong>.cshrc file</strong></p>
+
+<ul>
+  <li><code>~/.cshrc</code> contains shell configuration </li>
+  <li><code>PATH</code> contains paths for programs you run on terminal. E.g. more, less etc</li>
+</ul>
+
+<p><strong>Random cool monitors</strong></p>
+
+<ul>
+  <li>
+    <p><code>vmstat 5</code> shows the paging history, 5 denotes how fast the list is being refreshed</p>
+  </li>
+  <li>
+    <p><code>ps uax</code> shows the processes running right now </p>
+  </li>
+</ul>
+
+<p><strong>All about that stream</strong></p>
+
+<ul>
+  <li>Three I/O streams of unix (Similar to what it is in Java)
+    <ul>
+      <li>Say you have a java executable called prog.class</li>
+      <li>stdin 
+        <ul>
+          <li><code>java prog &lt; inputFile</code> will use <code>inputFile</code> for keyboardinput expected by stdin in java. </li>
+        </ul>
+      </li>
+      <li>stdout		
+        <ul>
+          <li><code>java prog &gt; outfile</code> writes whatever <code>System.out.println("")</code> into the <code>outfile</code> 		
+            <ul>
+              <li>Note that <code>System.err.println("")</code> is written on the screen instead of file</li>
+            </ul>
+          </li>
+          <li><code>java prog &gt;&amp; oufile</code> will write both stdout and stderr into <code>outfile</code></li>
+          <li><code>java prog &gt; /dev/tty) &gt;&amp; /path</code> will write stdout to <code>/dev/tty</code> and stderr to <code>/path</code></li>
+          <li><code>prog &gt;&gt; outfile</code> appendas to the <code>outfile</code> instead of overwriting it </li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<p><strong>Pipe command</strong></p>
+
+<ul>
+  <li>Feeds the output of one command to another (prog1 to prog2). e.g. </li>
+</ul>
+
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">prog1 &lt; file1 <span class="p">|</span> prog2</code></pre></div>
+
+<p><strong>Suspend/resume jobs aka COOL STUFF</strong></p>
+
+<ul>
+  <li><code>ctrl+z</code> suspends/pauses the running job</li>
+  <li><code>bg</code> puts a job to background</li>
+  <li><code>jobs</code> prints the list of jobs</li>
+  <li><code>fg %1</code> bring job no. 1 from background to foreground  </li>
+</ul>
+
+<p><strong>Tar Tricks</strong></p>
+
+<ul>
+  <li><code>tar cf Simplex.tar Simplex</code>
+    <ul>
+      <li><code>c</code>reate a <code>f</code>ile <code>Simplex.tar</code> from <code>Simplex</code></li>
+    </ul>
+  </li>
+  <li><code>mkdir newDir &amp; cd newDir &amp;&amp; tar xf ../Simplex.tar</code>
+    <ul>
+      <li>Creates <code>newDir</code> and extracts <code>Simplex</code> into <code>newDir</code></li>
+    </ul>
+  </li>
+  <li>Loop: <code>basename</code> parses out from every <code>$i</code> just its filename. The loop creates a copy of every file but changes the extension to <code>.save</code>.</li>
+</ul>
+
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">foreach i <span class="o">(</span>*.txt<span class="o">)</span>
+	foreach? cp <span class="nv">$i</span> <span class="sb">`</span>basename <span class="nv">$i</span> .txt<span class="sb">`</span>.save
+	foreach? end</code></pre></div>
+
+
+      </div>
+      
+      
+      <div id="disqus_thread"></div>
+      <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+      
+    </article>
+
+    <footer>
+      <span><a href="https://akarki15.github.io">Aashish</a></span>
+      <span></span>
+      <span>&copy; 2015</span>
+    </footer>
+  </body>
+</html>

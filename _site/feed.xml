@@ -1,0 +1,379 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Musings</title>
+    <description>Attempt to jot down my thoughts</description>
+    <link>https://akarki15.github.io/blog</link>
+    <atom:link href="https://akarki15.github.io/blogfeed.xml" rel="self" type="application/rss+xml" />
+    <pubDate>Wed, 01 Apr 2015 21:55:38 -0400</pubDate>
+    <lastBuildDate>Wed, 01 Apr 2015 21:55:38 -0400</lastBuildDate>
+    <generator>Jekyll v2.5.1</generator>
+    
+      <item>
+        <title>Unix crashcourse</title>
+        <description>&lt;p&gt;Following is a list of basic shell commands for Unix:&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;ls&lt;/strong&gt;&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;ls -l&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Outputs &lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;drwxr-x---   &lt;span class=&quot;m&quot;&gt;2&lt;/span&gt; akarki15 akarki15       &lt;span class=&quot;m&quot;&gt;6&lt;/span&gt; Jun  &lt;span class=&quot;m&quot;&gt;2&lt;/span&gt;  &lt;span class=&quot;m&quot;&gt;2011&lt;/span&gt; bin
+-rw-r-----   &lt;span class=&quot;m&quot;&gt;1&lt;/span&gt; akarki15 akarki15 &lt;span class=&quot;m&quot;&gt;4194304&lt;/span&gt; Apr &lt;span class=&quot;m&quot;&gt;22&lt;/span&gt;  &lt;span class=&quot;m&quot;&gt;2014&lt;/span&gt; block-device.data
+drwxrwxr-x  &lt;span class=&quot;m&quot;&gt;17&lt;/span&gt; akarki15 akarki15    &lt;span class=&quot;m&quot;&gt;4096&lt;/span&gt; Feb &lt;span class=&quot;m&quot;&gt;28&lt;/span&gt;  &lt;span class=&quot;m&quot;&gt;2014&lt;/span&gt; cs111
+drwxr-x---  &lt;span class=&quot;m&quot;&gt;19&lt;/span&gt; akarki15 akarki15    &lt;span class=&quot;m&quot;&gt;4096&lt;/span&gt; May &lt;span class=&quot;m&quot;&gt;28&lt;/span&gt;  &lt;span class=&quot;m&quot;&gt;2014&lt;/span&gt; cs112
+drwxr-x---   &lt;span class=&quot;m&quot;&gt;6&lt;/span&gt; akarki15 akarki15     &lt;span class=&quot;m&quot;&gt;147&lt;/span&gt; May &lt;span class=&quot;m&quot;&gt;10&lt;/span&gt;  &lt;span class=&quot;m&quot;&gt;2014&lt;/span&gt; cs-261
+drwxr-x---   &lt;span class=&quot;m&quot;&gt;3&lt;/span&gt; akarki15 akarki15      &lt;span class=&quot;m&quot;&gt;18&lt;/span&gt; May  &lt;span class=&quot;m&quot;&gt;1&lt;/span&gt;  &lt;span class=&quot;m&quot;&gt;2013&lt;/span&gt; CS281&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;First column of the output is showing access rights
+    &lt;ol&gt;
+      &lt;li&gt;rwx: read, write, executable&lt;/li&gt;
+      &lt;li&gt;Three sets of them for user, others in the group, and everyone&lt;/li&gt;
+    &lt;/ol&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;How do you change the access settings?&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;chmod u+w will give &lt;em&gt;write&lt;/em&gt; rights to &lt;em&gt;users&lt;/em&gt; in the group&lt;/li&gt;
+  &lt;li&gt;chmod o+x will give &lt;em&gt;executable&lt;/em&gt; rights to &lt;em&gt;others&lt;/em&gt; in the group&lt;/li&gt;
+  &lt;li&gt;chmod a-r will take away &lt;em&gt;read&lt;/em&gt; rights to &lt;em&gt;everyone&lt;/em&gt; in the group&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Some switches for ls&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;Command&lt;/th&gt;
+      &lt;th&gt;Description&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;code&gt;ls -a&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;shows “all” files&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;code&gt;ls -d a*&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;Wildcard to display all files whose filename begins with a&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;code&gt;ls -d [i-l]*&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;[i-l] is a set containing letters i through l&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;&lt;strong&gt;Cool things you can do with dot dot (..) and tilde (~)&lt;/strong&gt; &lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;.. represents the parent director. So say you are in &lt;code&gt;/home/aashish&lt;/code&gt; and &lt;code&gt;/home&lt;/code&gt; has another file called &lt;code&gt;a.java&lt;/code&gt;. You can access it from aashish by saying &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;cat ../a.java&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;code&gt;~/&lt;/code&gt; refers to the root directory&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;Using History&lt;/strong&gt; &lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;code&gt;history&lt;/code&gt; shows list of previous shell commands used. It gave following output on my computer: &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;m&quot;&gt;5673&lt;/span&gt;  ssh -Y akarki15@romulus.amherst.edu
+ &lt;span class=&quot;m&quot;&gt;5674&lt;/span&gt;  &lt;span class=&quot;nb&quot;&gt;cd &lt;/span&gt;Desktop/jam/blog/
+ &lt;span class=&quot;m&quot;&gt;5675&lt;/span&gt;  jekyll build
+ &lt;span class=&quot;m&quot;&gt;5676&lt;/span&gt;  jekyll serve&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Run a certain numbered command by &lt;code&gt;!&amp;lt;number of the command&amp;gt;&lt;/code&gt;. For exmaple &lt;code&gt;!5676&lt;/code&gt; will run &lt;code&gt;jekyll serve&lt;/code&gt;. &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;.cshrc file&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;code&gt;~/.cshrc&lt;/code&gt; contains shell configuration &lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;PATH&lt;/code&gt; contains paths for programs you run on terminal. E.g. more, less etc&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;Random cool monitors&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;code&gt;vmstat 5&lt;/code&gt; shows the paging history, 5 denotes how fast the list is being refreshed&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;code&gt;ps uax&lt;/code&gt; shows the processes running right now &lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;All about that stream&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Three I/O streams of unix (Similar to what it is in Java)
+    &lt;ul&gt;
+      &lt;li&gt;Say you have a java executable called prog.class&lt;/li&gt;
+      &lt;li&gt;stdin 
+        &lt;ul&gt;
+          &lt;li&gt;&lt;code&gt;java prog &amp;lt; inputFile&lt;/code&gt; will use &lt;code&gt;inputFile&lt;/code&gt; for keyboardinput expected by stdin in java. &lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+      &lt;li&gt;stdout		
+        &lt;ul&gt;
+          &lt;li&gt;&lt;code&gt;java prog &amp;gt; outfile&lt;/code&gt; writes whatever &lt;code&gt;System.out.println(&quot;&quot;)&lt;/code&gt; into the &lt;code&gt;outfile&lt;/code&gt; 		
+            &lt;ul&gt;
+              &lt;li&gt;Note that &lt;code&gt;System.err.println(&quot;&quot;)&lt;/code&gt; is written on the screen instead of file&lt;/li&gt;
+            &lt;/ul&gt;
+          &lt;/li&gt;
+          &lt;li&gt;&lt;code&gt;java prog &amp;gt;&amp;amp; oufile&lt;/code&gt; will write both stdout and stderr into &lt;code&gt;outfile&lt;/code&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;code&gt;java prog &amp;gt; /dev/tty) &amp;gt;&amp;amp; /path&lt;/code&gt; will write stdout to &lt;code&gt;/dev/tty&lt;/code&gt; and stderr to &lt;code&gt;/path&lt;/code&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;code&gt;prog &amp;gt;&amp;gt; outfile&lt;/code&gt; appendas to the &lt;code&gt;outfile&lt;/code&gt; instead of overwriting it &lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;Pipe command&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Feeds the output of one command to another (prog1 to prog2). e.g. &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;prog1 &amp;lt; file1 &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt; prog2&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;strong&gt;Suspend/resume jobs aka COOL STUFF&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;code&gt;ctrl+z&lt;/code&gt; suspends/pauses the running job&lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;bg&lt;/code&gt; puts a job to background&lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;jobs&lt;/code&gt; prints the list of jobs&lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;fg %1&lt;/code&gt; bring job no. 1 from background to foreground  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;Tar Tricks&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;code&gt;tar cf Simplex.tar Simplex&lt;/code&gt;
+    &lt;ul&gt;
+      &lt;li&gt;&lt;code&gt;c&lt;/code&gt;reate a &lt;code&gt;f&lt;/code&gt;ile &lt;code&gt;Simplex.tar&lt;/code&gt; from &lt;code&gt;Simplex&lt;/code&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;mkdir newDir &amp;amp; cd newDir &amp;amp;&amp;amp; tar xf ../Simplex.tar&lt;/code&gt;
+    &lt;ul&gt;
+      &lt;li&gt;Creates &lt;code&gt;newDir&lt;/code&gt; and extracts &lt;code&gt;Simplex&lt;/code&gt; into &lt;code&gt;newDir&lt;/code&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Loop: &lt;code&gt;basename&lt;/code&gt; parses out from every &lt;code&gt;$i&lt;/code&gt; just its filename. The loop creates a copy of every file but changes the extension to &lt;code&gt;.save&lt;/code&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;foreach i &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;*.txt&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+	foreach? cp &lt;span class=&quot;nv&quot;&gt;$i&lt;/span&gt; &lt;span class=&quot;sb&quot;&gt;`&lt;/span&gt;basename &lt;span class=&quot;nv&quot;&gt;$i&lt;/span&gt; .txt&lt;span class=&quot;sb&quot;&gt;`&lt;/span&gt;.save
+	foreach? end&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+</description>
+        <pubDate>Wed, 01 Apr 2015 00:00:00 -0400</pubDate>
+        <link>https://akarki15.github.io/unix/shell/shellpower/2015/04/01/unix-crash-course.html</link>
+        <guid isPermaLink="true">https://akarki15.github.io/blog/unix/shell/shellpower/2015/04/01/unix-crash-course.html</guid>
+        
+        
+        <category>unix</category>
+        
+        <category>shell</category>
+        
+        <category>shellpower</category>
+        
+      </item>
+    
+      <item>
+        <title>Why does it hurt when someone dies?</title>
+        <description>&lt;p&gt;I received a call from my sister today who told me that our beloved pet dog “kaale” died today. For a dog, she lived a long life - she was 15 years old this year. I was grieved by the news although I had been in preparing myself to bear the inevitable news of her (Kaale) since returning from my trip to Nepal. She looked frail and thin, ate very little and didn’t move around much. I shudder even now thinking how &lt;em&gt;thin&lt;/em&gt; she had gotten- I could feel her spine sticking out of her back and her ribs protruding out of her belly. &lt;/p&gt;
+
+&lt;p&gt;I tried to console my sister who was on tears over the phone. I found it meaningful to talk about how important role Kaale had played in our lives- especially in our childhood. She had been with us, and around us throughout as we were growing up. My sister brought Kaale in the little metallic basket of her newly purchased ladybird bike while she was in her 4th grade. She brought her all the way from the bazaar, from our aunt’s big 4-storied house. I can’t remember how young kaale was at that time, but I am fairly confident that she was under a month old. I think my mom was surprised that kaale didn’t die during that bike trip considering the ladybird bike did not have any suspension whatsoever and my sister had to travel around 500 meters of graveled road along the way. I still remember playing with kaale in the front porch- as I fluttered a piece of cloth and ran around with it in the front porch and the verendah, kaale would chase it and try to bite it. I vividly recollect teaching her how to stand on her hind legs and do a “namaste”. Although her face would twitch a little indicating the discomfort she was having, she would silently obey me. I was a proud elder brother who had taught kaale a trick. I also remember that one time during my 8th grade when my sister and I called the local radio station and told the hosts that we wanted to wish Kaale her 4th birthday. We thought it was ingenious and extremely hilarious. I think we have a recording of that broadcast somewhere in our old PC/phone. &lt;/p&gt;
+
+&lt;p&gt;As I was recollecting the memory of Kaale with my sister, I realized that it is the memory of the dead that haunts us. Our loved ones embody the times we’ve had together- kaale embodied our childhood, our innocence, our glee and our mischievousness. Last winter when I was with Kaale, I did not see the crooked old body, breaking apart like the rusted 15-year old ladybird on the roof of our house- battered by the rain, the heat and the wind of sub-tropical hill. Instead, I saw the memories we’d created, and the times we’d shared. As I saw Kaale basking in the sun last winter, looking coldly and almost angrily at the jumping little dog (we had recently got another dog), I remembered W.B. Yeat’s poem. &lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;THE LAMENTATION OF THE OLD PENSIONER&lt;/p&gt;
+
+  &lt;p&gt;Although I shelter from the rain
+Under a broken tree
+My chair was nearest to the fire
+In every company
+That talked of love or politics,
+Ere Time transfigured me.&lt;/p&gt;
+
+  &lt;p&gt;Though lads are making pikes again
+For some conspiracy,
+And crazy rascals rage their fill
+At human tyranny,
+My contemplations are of Time
+That has transfigured me.&lt;/p&gt;
+
+  &lt;p&gt;There’s not a woman turns her face
+Upon a broken tree,
+And yet the beauties that I loved
+Are in my memory;
+I spit into the face of Time
+That has transfigured me&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;And when I heard that Kaale died, I felt that a part of my childhood had died- I felt little pigeonhole that is Kaale through which I could cherish my memories was closed. Although I can’t imagine Kaale’s suffering while she was dying, I was kind of glad that she was ridden of the bitterness that had filled her life- how time had transfigured her. She who used to be more agile, more talented than that little prick (the dog) who constantly teases her, was now rendered so ugly and helpless by time. In a way, my own childhood and my memories were being mocked by that little prick. I am glad that Kaale does not have to endure the bitterness and the pain of old age anymore. But at the same time, my heart is utterly broken because with Kaale, a part of my childhood just died. &lt;/p&gt;
+</description>
+        <pubDate>Mon, 30 Mar 2015 00:00:00 -0400</pubDate>
+        <link>https://akarki15.github.io/death,/contemplation/2015/03/30/death.html</link>
+        <guid isPermaLink="true">https://akarki15.github.io/blog/death,/contemplation/2015/03/30/death.html</guid>
+        
+        
+        <category>death,</category>
+        
+        <category>contemplation</category>
+        
+      </item>
+    
+      <item>
+        <title>Why you should read the Nussbaum paper on happiness?</title>
+        <description>&lt;p&gt;I am taking a course on the Microeconomic foundations of happiness this semester. During the course of semester, I really got to think about what happiness truly is. Now, you may roll your eyes at the thought of happiness since the concept of it seems so platonic and useless to our daily lives. The course does not aim to define/investigate any of the platonic idea of happiness. Instead, it tries to quantify and analyze the daily definition of happiness that drives so much of our activities- activities that require complex strategies and coordination like paraglyding to dead simple activities like listening to the music or lying on a couch. &lt;/p&gt;
+
+&lt;p&gt;Before we start discussing the idea of happiness, we need to start the discussion about what it means to engage in any activity. &lt;/p&gt;
+
+</description>
+        <pubDate>Sat, 28 Mar 2015 00:00:00 -0400</pubDate>
+        <link>https://akarki15.github.io/happiness,/economics/2015/03/28/happiness.html</link>
+        <guid isPermaLink="true">https://akarki15.github.io/blog/happiness,/economics/2015/03/28/happiness.html</guid>
+        
+        
+        <category>happiness,</category>
+        
+        <category>economics</category>
+        
+      </item>
+    
+      <item>
+        <title>Why you should read the Nussbaum paper on happiness?</title>
+        <description>&lt;p&gt;&lt;strong&gt;Basic&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Neque porro &lt;em&gt;quisquam&lt;/em&gt; est, qui &lt;strong&gt;dolorem&lt;/strong&gt; ipsum, quia &lt;strong&gt;&lt;em&gt;dolor&lt;/em&gt;&lt;/strong&gt; sit, amet, &lt;a href=&quot;http://cjdns.info/&quot;&gt;consectetur&lt;/a&gt;, adipisci velit.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;lorem&lt;/li&gt;
+  &lt;li&gt;ipsum&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;dolor&lt;/li&gt;
+  &lt;li&gt;sit&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;First Header&lt;/th&gt;
+      &lt;th&gt;Second Header&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Table Cell&lt;/td&gt;
+      &lt;td&gt;Table Cell&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;&lt;strong&gt;Blockquote&lt;/strong&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;They who can give up essential liberty to obtain a little temporary safety, deserve neither liberty nor safety.&lt;/p&gt;
+
+  &lt;p&gt;&lt;em&gt;Benjamin Franklin&lt;/em&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;strong&gt;Code&lt;/strong&gt;&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-c&quot; data-lang=&quot;c&quot;&gt;&lt;span class=&quot;k&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;asyncEnabled&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Dict&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;args&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;vAdmin&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;String&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;txid&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;struct&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Allocator&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;requestAlloc&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;struct&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Admin&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;admin&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Identity_check&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;((&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;struct&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Admin&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;vAdmin&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;kt&quot;&gt;int64_t&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;enabled&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;admin&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;asyncEnabled&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;Dict&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;d&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Dict_CONST&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;String_CONST&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;asyncEnabled&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Int_OBJ&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;enabled&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;NULL&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;Admin_sendMessage&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;amp;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;d&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;txid&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;admin&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+</description>
+        <pubDate>Sat, 28 Mar 2015 00:00:00 -0400</pubDate>
+        <link>https://akarki15.github.io/happiness,/economics/2015/03/28/example.html</link>
+        <guid isPermaLink="true">https://akarki15.github.io/blog/happiness,/economics/2015/03/28/example.html</guid>
+        
+        
+        <category>happiness,</category>
+        
+        <category>economics</category>
+        
+      </item>
+    
+      <item>
+        <title>Example 2</title>
+        <description>&lt;p&gt;&lt;strong&gt;Basic&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Neque porro &lt;em&gt;quisquam&lt;/em&gt; est, qui &lt;strong&gt;dolorem&lt;/strong&gt; ipsum, quia &lt;strong&gt;&lt;em&gt;dolor&lt;/em&gt;&lt;/strong&gt; sit, amet, &lt;a href=&quot;http://cjdns.info/&quot;&gt;consectetur&lt;/a&gt;, adipisci velit.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;lorem&lt;/li&gt;
+  &lt;li&gt;ipsum&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;dolor&lt;/li&gt;
+  &lt;li&gt;sit&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;First Header&lt;/th&gt;
+      &lt;th&gt;Second Header&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Table Cell&lt;/td&gt;
+      &lt;td&gt;Table Cell&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;&lt;strong&gt;Blockquote&lt;/strong&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;They who can give up essential liberty to obtain a little temporary safety, deserve neither liberty nor safety.&lt;/p&gt;
+
+  &lt;p&gt;&lt;em&gt;Benjamin Franklin&lt;/em&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;strong&gt;Code&lt;/strong&gt;&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-c&quot; data-lang=&quot;c&quot;&gt;&lt;span class=&quot;k&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;asyncEnabled&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Dict&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;args&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;vAdmin&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;String&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;txid&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;struct&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Allocator&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;requestAlloc&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;struct&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Admin&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;admin&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Identity_check&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;((&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;struct&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Admin&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;vAdmin&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;kt&quot;&gt;int64_t&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;enabled&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;admin&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;asyncEnabled&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;Dict&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;d&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Dict_CONST&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;String_CONST&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;asyncEnabled&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Int_OBJ&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;enabled&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;NULL&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;Admin_sendMessage&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;amp;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;d&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;txid&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;admin&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+</description>
+        <pubDate>Wed, 10 Sep 2014 18:37:00 -0400</pubDate>
+        <link>https://akarki15.github.io/example/2014/09/10/example-2.html</link>
+        <guid isPermaLink="true">https://akarki15.github.io/blog/example/2014/09/10/example-2.html</guid>
+        
+        
+        <category>example</category>
+        
+      </item>
+    
+  </channel>
+</rss>
