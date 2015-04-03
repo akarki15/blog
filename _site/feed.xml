@@ -5,8 +5,8 @@
     <description>Attempt to jot down my thoughts</description>
     <link>https://akarki15.github.io/blog</link>
     <atom:link href="https://akarki15.github.io/blogfeed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Wed, 01 Apr 2015 23:01:40 -0400</pubDate>
-    <lastBuildDate>Wed, 01 Apr 2015 23:01:40 -0400</lastBuildDate>
+    <pubDate>Fri, 03 Apr 2015 11:58:53 -0400</pubDate>
+    <lastBuildDate>Fri, 03 Apr 2015 11:58:53 -0400</lastBuildDate>
     <generator>Jekyll v2.5.1</generator>
     
       <item>
@@ -165,7 +165,7 @@ drwxr-x---   &lt;span class=&quot;m&quot;&gt;3&lt;/span&gt; akarki15 akarki15   
       &lt;li&gt;&lt;code&gt;c&lt;/code&gt;reate a &lt;code&gt;f&lt;/code&gt;ile &lt;code&gt;Simplex.tar&lt;/code&gt; from &lt;code&gt;Simplex&lt;/code&gt;&lt;/li&gt;
     &lt;/ul&gt;
   &lt;/li&gt;
-  &lt;li&gt;&lt;code&gt;mkdir newDir &amp;amp; cd newDir &amp;amp;&amp;amp; tar xf ../Simplex.tar&lt;/code&gt;
+  &lt;li&gt;&lt;code&gt;mkdir newDir ; cd newDir ; tar xf ../Simplex.tar&lt;/code&gt;
     &lt;ul&gt;
       &lt;li&gt;Creates &lt;code&gt;newDir&lt;/code&gt; and extracts &lt;code&gt;Simplex&lt;/code&gt; into &lt;code&gt;newDir&lt;/code&gt;&lt;/li&gt;
     &lt;/ul&gt;

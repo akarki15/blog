@@ -116,7 +116,7 @@ Some switches for ls
 
 - `tar cf Simplex.tar Simplex`
 	- `c`reate a `f`ile `Simplex.tar` from `Simplex`
-- `mkdir newDir & cd newDir && tar xf ../Simplex.tar`
+- `mkdir newDir ; cd newDir ; tar xf ../Simplex.tar`
 	- Creates `newDir` and extracts `Simplex` into `newDir`
 - Loop: `basename` parses out from every `$i` just its filename. The loop creates a copy of every file but changes the extension to `.save`.
 
