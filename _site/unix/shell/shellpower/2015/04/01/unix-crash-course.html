@@ -6,19 +6,19 @@
     <meta charset="utf-8">
     
     <meta name="description" content="Attempt to jot down my thoughts">
-    <title> Unix crashcourse › Musings</title>
+    <title> Unix crashcourse › Aashish</title>
     <link rel="canonical" href="https://akarki15.github.io/blog/unix/shell/shellpower/2015/04/01/unix-crash-course.html">
     <link href="/blog/main.css" rel="stylesheet" type="text/css">
     <link href='//fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,200italic,300italic,400italic,600italic,700italic' rel='stylesheet' type='text/css'>
     <link href='//fonts.googleapis.com/css?family=Gentium+Basic:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
     <link href='//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css' rel='stylesheet' type='text/css'>
-    <link rel="alternate" type="application/rss+xml" title="Musings &raquo; Feed" href="/blog/feed.xml">
-    <script src="//{"short_name"=>"aashish_karki"}.disqus.com/embed.js" async></script>
+    <link rel="alternate" type="application/rss+xml" title="Aashish &raquo; Feed" href="/blog/feed.xml">
+    <script src="//{"short_name"=>"niklasbuschmann"}.disqus.com/embed.js" async></script>
     
   </head>
   <body>
     <header>
-      <h1><a href="/blog/">Musings</a></h1>
+      <h1><a href="/blog/">Aashish</a></h1>
       <nav>
         <ul>
           <li><a href="/blog/">Home</a></li><li><a href="/blog/archive.html">Archive</a></li>
@@ -128,6 +128,9 @@ drwxr-x---   <span class="m">3</span> akarki15 akarki15      <span class="m">18<
 
 <ul>
   <li>
+    <p><code>top</code> shows the running processes on the system</p>
+  </li>
+  <li>
     <p><code>vmstat 5</code> shows the paging history, 5 denotes how fast the list is being refreshed</p>
   </li>
   <li>
@@ -179,6 +182,16 @@ drwxr-x---   <span class="m">3</span> akarki15 akarki15      <span class="m">18<
   <li><code>fg %1</code> bring job no. 1 from background to foreground  </li>
 </ul>
 
+<p><strong>grep</strong></p>
+
+<ul>
+  <li><code>grep 'word' filename</code> searches for word in file called filename</li>
+  <li><code>grep --color 'data' fileName</code> display grep results in color </li>
+  <li><code>grep 'word' file1 file2 file3</code> searches for word in file1, file2 and file3</li>
+  <li><code>grep 'string1 string2'  filename</code> searches for string1, string2 in filename</li>
+  <li><code>cat otherfile | grep 'something'</code> pipe grep result and display its (their) contents</li>
+</ul>
+
 <p><strong>Tar Tricks</strong></p>
 
 <ul>
@@ -221,7 +234,7 @@ drwxr-x---   <span class="m">3</span> akarki15 akarki15      <span class="m">18<
     </article>
 
     <footer>
-      <span><a href="https://akarki15.github.io">Aashish</a></span>
+      <span><a href="https://akarki15.github.io">Aashish Karki</a></span>
       <span><a href="https://github.com/akarki15"><i class="fa fa-github-square"></i></a></span>
       <span>&copy; 2015</span>
     </footer>

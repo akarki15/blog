@@ -78,6 +78,8 @@ Some switches for ls
 
 **Random cool monitors**
 
+- `top` shows the running processes on the system
+
 - `vmstat 5` shows the paging history, 5 denotes how fast the list is being refreshed
 
 - `ps uax` shows the processes running right now 
@@ -111,6 +113,16 @@ Some switches for ls
 - `bg` puts a job to background
 - `jobs` prints the list of jobs
 - `fg %1` bring job no. 1 from background to foreground  
+
+**grep**
+
+- `grep 'word' filename` searches for word in file called filename
+- `grep --color 'data' fileName` display grep results in color 
+- `grep 'word' file1 file2 file3` searches for word in file1, file2 and file3
+- `grep 'string1 string2'  filename` searches for string1, string2 in filename
+- `cat otherfile | grep 'something'` pipe grep result and display its (their) contents
+
+ 
 
 **Tar Tricks**
 
