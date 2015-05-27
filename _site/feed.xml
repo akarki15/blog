@@ -5,9 +5,24 @@
     <description>Attempt to jot down my thoughts</description>
     <link>https://akarki15.github.io/blog</link>
     <atom:link href="https://akarki15.github.io/blogfeed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Fri, 03 Apr 2015 11:58:53 -0400</pubDate>
-    <lastBuildDate>Fri, 03 Apr 2015 11:58:53 -0400</lastBuildDate>
+    <pubDate>Sun, 05 Apr 2015 11:00:20 -0400</pubDate>
+    <lastBuildDate>Sun, 05 Apr 2015 11:00:20 -0400</lastBuildDate>
     <generator>Jekyll v2.5.1</generator>
+    
+      <item>
+        <title>Toothbrush</title>
+        <description>
+</description>
+        <pubDate>Tue, 28 Mar 3015 00:00:00 -0400</pubDate>
+        <link>https://akarki15.github.io/happiness,/economics/3015/03/28/toothbrush.html</link>
+        <guid isPermaLink="true">https://akarki15.github.io/blog/happiness,/economics/3015/03/28/toothbrush.html</guid>
+        
+        
+        <category>happiness,</category>
+        
+        <category>economics</category>
+        
+      </item>
     
       <item>
         <title>Unix crashcourse</title>
