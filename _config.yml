@@ -8,7 +8,7 @@ baseurl: "/blog" # comment out if in root directory
 
 comments:  
     disqus: 
-      short_name: "aashish_karki"
+      short_name: "niklasbuschmann"
 #    isso: "comments.mysite.org"
 
 style:

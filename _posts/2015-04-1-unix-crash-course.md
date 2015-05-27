@@ -33,7 +33,7 @@ drwxr-x---   3 akarki15 akarki15      18 May  1  2013 CS281
 
 - `chmod u+w` will give _write_ rights to _users_ in the group
 - `chmod o+x` will give _executable_ rights to _others_ in the group
-- `chmod a-r` will take away _read_ rights to _everyone_ in the group
+- `chmod a-r` will take away _read_ rights from _all_ in the group
 
 
 Some switches for ls
