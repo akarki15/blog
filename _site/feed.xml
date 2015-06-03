@@ -5,9 +5,26 @@
     <description>Attempt to jot down my thoughts</description>
     <link>https://akarki15.github.io/blog</link>
     <atom:link href="https://akarki15.github.io/blogfeed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Wed, 27 May 2015 15:07:48 -0400</pubDate>
-    <lastBuildDate>Wed, 27 May 2015 15:07:48 -0400</lastBuildDate>
+    <pubDate>Thu, 28 May 2015 22:18:27 -0400</pubDate>
+    <lastBuildDate>Thu, 28 May 2015 22:18:27 -0400</lastBuildDate>
     <generator>Jekyll v2.5.1</generator>
+    
+      <item>
+        <title>Python&#39;s decorators and generators</title>
+        <description>&lt;p&gt;this is pretty cool . &lt;/p&gt;
+</description>
+        <pubDate>Thu, 28 May 2015 00:00:00 -0400</pubDate>
+        <link>https://akarki15.github.io/python/decorator/generator/2015/05/28/python.html</link>
+        <guid isPermaLink="true">https://akarki15.github.io/blog/python/decorator/generator/2015/05/28/python.html</guid>
+        
+        
+        <category>python</category>
+        
+        <category>decorator</category>
+        
+        <category>generator</category>
+        
+      </item>
     
       <item>
         <title>Unix crashcourse</title>
