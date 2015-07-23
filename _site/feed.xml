@@ -5,24 +5,24 @@
     <description>Attempt to jot down my thoughts</description>
     <link>https://akarki15.github.io/blog</link>
     <atom:link href="https://akarki15.github.io/blogfeed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Thu, 28 May 2015 22:18:27 -0400</pubDate>
-    <lastBuildDate>Thu, 28 May 2015 22:18:27 -0400</lastBuildDate>
+    <pubDate>Thu, 23 Jul 2015 03:09:26 -0400</pubDate>
+    <lastBuildDate>Thu, 23 Jul 2015 03:09:26 -0400</lastBuildDate>
     <generator>Jekyll v2.5.1</generator>
     
       <item>
-        <title>Python&#39;s decorators and generators</title>
-        <description>&lt;p&gt;this is pretty cool . &lt;/p&gt;
+        <title>Why do we like reading old books?</title>
+        <description>&lt;p&gt;There is a strange timelessness in reading an old book because it is a physical piece of history. A book carries not only the stories about protagonists and antagonists but also about the countless readers who read the book. In a way, the readers themselves become part of the “plot” that the book carries with it.&lt;/p&gt;
+
+&lt;p&gt;The crease at the end of the chapters add another layer of history to the original plot. Holding an old book is almost like meeting grandma as a kid. She is as sweet and innocent as kids; she has the same childishness, and carefreeness as we once did as kids. But contrasting them is her body - covered with stretched and wrinkled skin, it bears witness to the countless lives and stories it was once part of. Similar to our grandma, an old book, too, bears witness to the countless lives it has been part of. The spice-stained pages, the tear wrinkled edges and the sun-dried fluffy pages bear witness to both important and frivolous events of a life that has passed. The person who lived that life may be alive or long dead but its remnants continue to live and be part of other reader’s lives. If the person is alive, does she ever think about these spice-smeared pages? Does she remember how her tears shriveled these edges? Or has she forgotten these pages and also the events that caused the deformation? I will never know.&lt;/p&gt;
+
+&lt;p&gt;Sometimes I recur these ideas on myself. Have I forgotten important events of my life? Have the remnants of those events been part of someone else’s life or have they all vanished? Will I live in people’s mind as Aashish or will I my life disintegrate into these little unidentifiable cues in old and shabby books?&lt;/p&gt;
 </description>
-        <pubDate>Thu, 28 May 2015 00:00:00 -0400</pubDate>
-        <link>https://akarki15.github.io/python/decorator/generator/2015/05/28/python.html</link>
-        <guid isPermaLink="true">https://akarki15.github.io/blog/python/decorator/generator/2015/05/28/python.html</guid>
+        <pubDate>Thu, 23 Jul 2015 00:00:00 -0400</pubDate>
+        <link>https://akarki15.github.io/books/2015/07/23/oldbooks.html</link>
+        <guid isPermaLink="true">https://akarki15.github.io/blog/books/2015/07/23/oldbooks.html</guid>
         
         
-        <category>python</category>
-        
-        <category>decorator</category>
-        
-        <category>generator</category>
+        <category>books</category>
         
       </item>
     
