@@ -1,28 +1,33 @@
 ---
-title:  "Javascript's good parts"
+title:  "Notes from javascript the good parts"
 date:   June 3, 2015
 categories: javascript good parts
-published: false
+published: true
 ---
 
 - In JavaScript, arrays are objects, functions are objects, regular expressions are objects, and, of course, objects are objects.
 - An object is a container of properties, where a property has a name and a value. A property name can be any string, including the empty string.
 - An object literal is a pair of curly braces surrounding zero or more name/value pairs
 
+{% highlight javascript %}
 var empty_object = {};
 var stooge = {
     "first-name": "Jerome",
     "last-name": "Howard"
 };
+{% endhighlight %}
 
 - Objects in JavaScript are class-free
-- The || operator can be used to fill in default values:
+- The \|\| operator can be used to fill in default values:
 
+{% highlight javascript %}
 var middle = stooge["middle-name"] || "(none)";
 var status = flight.status || "unknown";
+{% endhighlight %}
 
 - Objects are passed around by reference. They are never copied:
 
+{% highlight javascript %}
 var x = stooge;
 x.nickname = 'Curly';
 var nick = stooge.nickname;
@@ -34,23 +39,25 @@ var a = {}, b = {}, c = {};
 a = b = c = {};
     // a, b, and c all refer to
     // the same empty object
+{% endhighlight %}
 
 - Every object is linked to a prototype object from which it can inherit properties. All objects created from object literals are linked to Object.prototype, an object that comes standard with JavaScript.
 
-- Functions in JavaScript are objects. Objects are collections of name/value pairs having a hidden link to a prototype object. Objects produced from object literals are linked to Object.prototype. Function objects are linked to Function.prototype (which is itself linked to Object.prototype).
+- Functions in JavaScript are objects. Objects are collections of name/value pairs having a hidden link to a prototype object. Objects produced from object literals are linked to Object.prototype. Function objects are linked to Function.prototype (which is itself linked to Object.prototype). 
 
 - Function objects are created with function literals:
 
+{% highlight javascript %}
 // Create a variable called add and store a function
 // in it that adds two numbers.
-var add = function (a, b) { return a + b;
-};
+var add = function (a, b) { return a + b;};
+{% endhighlight %}
 
+- Function name is optional. When it doesn't have a name, it is called an "anonymous function". Above example is an anoymous function; it is just assigned to a variable but it doesn't have a name. 
 
-- Function name is optional. When it doesn't have a name, it is called an "anonymous function". Above example is an anoymous function; it is just assigned to a variable but it doesn't have a name.
+- JS Variable Scope example: 
 
-- JS Variable Scope example:
-
+{% highlight javascript %}
 // Source: http://javascriptissexy.com/javascript-variable-scope-and-hoisting-explained/
 // If you don't declare your local variables with the var keyword, they are part of the global scope​
 ​var name = "Michael Jackson";
@@ -59,7 +66,7 @@ var add = function (a, b) { return a + b;
 	console.log (name);
 }
 ​
-​function showOrdinaryPersonName () {
+​function showOrdinaryPersonName () {	
 	name = "Johnny Evers";
 	console.log (name);
 }
@@ -72,13 +79,14 @@ showOrdinaryPersonName (); // Johnny Evers​
 showCelebrityName (); // Johnny Evers​
 ​
 ​// The solution is to declare your local variable with the var keyword​
-​function showOrdinaryPersonName () {
+​function showOrdinaryPersonName () {	
 	var name = "Johnny Evers"; // Now name is always a local variable and it will not overwrite the global variable​
 	console.log (name);
-}
+} 
+{% endhighlight %}
 
 - Curly brackets don't start a new scope. Prettty bad if you ask me (having come from Java background).
-
+{% highlight javascript %}
 for (var i = 1; i <= 10; i++) {
 	console.log (i); // outputs 1, 2, 3, 4, 5, 6, 7, 8, 9, 10;​
 };
@@ -90,16 +98,16 @@ console.log(i);
 ​
 ​// The variable i in the aNumber function below is the global variable i that was changed in the for loop above. Its last value was 11, set just before the for loop exited:​
 aNumber ();  // 11​
-
-- Variable Hoisting: Variable *declarations* are hoisted to the top of the scope (could be local/functional or global). Example:
-
+{% endhighlight %}
+- Variable Hoisting: Variable *declarations* are hoisted to the top of the scope (could be local/functional or global). Example: 
+{% highlight javascript %}
 function showName () {
 console.log ("First Name: " + name);
 ​var name = "Ford";
 console.log ("Last Name: " + name);
 }
 ​
-showName ();
+showName (); 
 ​// First Name: undefined​
 ​// Last Name: Ford​
 ​
@@ -116,12 +124,12 @@ name = "Ford"; // name is assigned a value​
 ​// now name is Ford​
 console.log ("Last Name: " + name); // Last Name: Ford​
 }
-
+{% endhighlight %}
 - *Function Declaration Overrides Variable Declaration When Hoisted*
 - Both function declaration and variable declarations are hoisted to the top of the containing scope. And function declaration takes precedence over variable declarations (but not over variable assignment). As is noted above, variable assignment is not hoisted, and neither is function assignment. As a reminder, this is a function assignment: var myFunction = function () {}.
 Here is a basic example to demonstrate:
 
-
+{% highlight javascript %}
 // Both the variable and the function are named myName​
 ​var myName; 
 ​function myName () {
@@ -137,10 +145,15 @@ console.log(typeof myName); // function
 console.log ("Rich");
 }
 ​
-console.log(typeof myName); // string
-It is important to note that function expressions, such as the example below, are not hoisted.
+console.log(typeof myName); // string 
+{% endhighlight %}
 
+- It is important to note that function expressions, such as the example below, are not hoisted.
+{% highlight javascript %}
 var myName = function () {
 console.log ("Rich");
-}
-In strict mode, an error will occur if you assign a variable a value without first declaring the variable. Always declare your variables.
+} 
+{% endhighlight %}
+- In strict mode, an error will occur if you assign a variable a value without first declaring the variable. Always declare your variables.
+
+

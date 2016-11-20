@@ -5,17 +5,66 @@
     <description>Attempt to jot down my thoughts</description>
     <link>https://akarki15.github.io/blog</link>
     <atom:link href="https://akarki15.github.io/blogfeed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Thu, 23 Jul 2015 03:09:26 -0400</pubDate>
-    <lastBuildDate>Thu, 23 Jul 2015 03:09:26 -0400</lastBuildDate>
+    <pubDate>Fri, 01 Jul 2016 01:04:05 -0400</pubDate>
+    <lastBuildDate>Fri, 01 Jul 2016 01:04:05 -0400</lastBuildDate>
     <generator>Jekyll v2.5.1</generator>
     
       <item>
+        <title>Method,  interface and pointers in golang</title>
+        <description>&lt;ul&gt;
+  &lt;li&gt;If a method is defined on a pointer to struct, the method can be called on a pointer to the struct type. In the example below, calling &lt;code&gt;ptr_s1.hello()&lt;/code&gt; is fine since method &lt;code&gt;hello()&lt;/code&gt; is defined on &lt;code&gt;*struct1&lt;/code&gt;. &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;&lt;a href=&quot;https://play.golang.org/p/sef4NPbNmR&quot;&gt;go play link&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-go&quot; data-lang=&quot;go&quot;&gt;&lt;span class=&quot;kd&quot;&gt;type&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;struct1&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;struct&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+	&lt;span class=&quot;nx&quot;&gt;greeting&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;string&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;kd&quot;&gt;func&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;s&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;struct1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;hello&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+	&lt;span class=&quot;nx&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;greeting&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;hello&amp;quot;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;kd&quot;&gt;func&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;main&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+	&lt;span class=&quot;nx&quot;&gt;ptr_s1&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;:=&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;amp;&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;struct1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{}&lt;/span&gt;
+	&lt;span class=&quot;nx&quot;&gt;fmt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;Printf&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;ptr_s1 is of type : %+T\n&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;ptr_s1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// *main.struct1&lt;/span&gt;
+	&lt;span class=&quot;nx&quot;&gt;fmt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;Printf&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;ptr_s1.greeting: %+v\n&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;ptr_s1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;    &lt;span class=&quot;c1&quot;&gt;// &amp;amp;{greeting:}&lt;/span&gt;
+
+	&lt;span class=&quot;nx&quot;&gt;ptr_s1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;hello&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+	&lt;span class=&quot;nx&quot;&gt;fmt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;Printf&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;ptr_s1.greeting: %+v\n&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;ptr_s1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// &amp;amp;{greeting:hello}&lt;/span&gt;
+	
+	&lt;span class=&quot;nx&quot;&gt;s1&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;:=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;struct1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{}&lt;/span&gt;
+	&lt;span class=&quot;nx&quot;&gt;fmt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;Printf&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;s1 is of type : %+T\n&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;s1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// main.struct1&lt;/span&gt;
+	&lt;span class=&quot;nx&quot;&gt;fmt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;Printf&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;s1.greeting: %+v\n&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;s1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;    &lt;span class=&quot;c1&quot;&gt;// {greeting:}&lt;/span&gt;
+
+	&lt;span class=&quot;nx&quot;&gt;s1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;hello&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+	&lt;span class=&quot;nx&quot;&gt;fmt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;Printf&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;s1.greeting: %+v\n&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;s1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// {greeting:hello}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;However, method &lt;code&gt;hello()&lt;/code&gt; is also callable on non pointer type &lt;code&gt;s1&lt;/code&gt;. In fact, &lt;code&gt;struct1.greeting&lt;/code&gt; gets populated with &lt;code&gt;hello&lt;/code&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+        <pubDate>Thu, 07 Jul 2016 00:00:00 -0400</pubDate>
+        <link>https://akarki15.github.io/go,/golang/2016/07/07/go-pointers-method.html</link>
+        <guid isPermaLink="true">https://akarki15.github.io/blog/go,/golang/2016/07/07/go-pointers-method.html</guid>
+        
+        
+        <category>go,</category>
+        
+        <category>golang</category>
+        
+      </item>
+    
+      <item>
         <title>Why do we like reading old books?</title>
-        <description>&lt;p&gt;There is a strange timelessness in reading an old book because it is a physical piece of history. A book carries not only the stories about protagonists and antagonists but also about the countless readers who read the book. In a way, the readers themselves become part of the “plot” that the book carries with it.&lt;/p&gt;
+        <description>&lt;p&gt;There is a strange timelessness in reading an old book because it is a physical piece of history. A book carries stories about not only the protagonists and antagonists but also about the countless readers who read the book. In a way, the readers themselves become part of the “plot” that the book carries with it.&lt;/p&gt;
 
-&lt;p&gt;The crease at the end of the chapters add another layer of history to the original plot. Holding an old book is almost like meeting grandma as a kid. She is as sweet and innocent as kids; she has the same childishness, and carefreeness as we once did as kids. But contrasting them is her body - covered with stretched and wrinkled skin, it bears witness to the countless lives and stories it was once part of. Similar to our grandma, an old book, too, bears witness to the countless lives it has been part of. The spice-stained pages, the tear wrinkled edges and the sun-dried fluffy pages bear witness to both important and frivolous events of a life that has passed. The person who lived that life may be alive or long dead but its remnants continue to live and be part of other reader’s lives. If the person is alive, does she ever think about these spice-smeared pages? Does she remember how her tears shriveled these edges? Or has she forgotten these pages and also the events that caused the deformation? I will never know.&lt;/p&gt;
+&lt;p&gt;The crease at the end of the chapters add another layer of history to the original plot. Holding an old book is almost like meeting grandma as a kid. She is sweet and innocent like kids; she has the same childishness, and carefreeness as we once did as kids. But contrasting to her demeanour is her body - it is covered with stretched and wrinkled skin; it bears witness to the countless lives and stories it was once part of. Similar to our grandma, an old book, too, bears witness to the countless lives it has been part of. The spice-stained pages, the tear wrinkled edges and the sun-dried fluffy pages bear witness to both important and frivolous events of a life that has passed. The person who lived that life may be alive or long dead but his remnants continue to live and be part of other reader’s lives through books. If the person is alive, does he ever think about these spice-smeared pages? Does he remember how his tears shriveled these edges? Or has he forgotten these pages and also the events that caused the deformation? &lt;/p&gt;
 
-&lt;p&gt;Sometimes I recur these ideas on myself. Have I forgotten important events of my life? Have the remnants of those events been part of someone else’s life or have they all vanished? Will I live in people’s mind as Aashish or will I my life disintegrate into these little unidentifiable cues in old and shabby books?&lt;/p&gt;
+&lt;p&gt;Sometimes I recur these ideas on myself. Have I forgotten important events of my life? Have the remnants of those events been part of someone else’s life or have they all vanished? Will I live in people’s mind as a single person or will I disintegrate into little unidentifiable cues in old shabby books?&lt;/p&gt;
 </description>
         <pubDate>Thu, 23 Jul 2015 00:00:00 -0400</pubDate>
         <link>https://akarki15.github.io/books/2015/07/23/oldbooks.html</link>
@@ -23,6 +72,188 @@
         
         
         <category>books</category>
+        
+      </item>
+    
+      <item>
+        <title>Notes from javascript the good parts</title>
+        <description>&lt;ul&gt;
+  &lt;li&gt;In JavaScript, arrays are objects, functions are objects, regular expressions are objects, and, of course, objects are objects.&lt;/li&gt;
+  &lt;li&gt;An object is a container of properties, where a property has a name and a value. A property name can be any string, including the empty string.&lt;/li&gt;
+  &lt;li&gt;An object literal is a pair of curly braces surrounding zero or more name/value pairs&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot; data-lang=&quot;javascript&quot;&gt;&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;empty_object&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{};&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;stooge&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;s2&quot;&gt;&amp;quot;first-name&amp;quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;Jerome&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;s2&quot;&gt;&amp;quot;last-name&amp;quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;Howard&amp;quot;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Objects in JavaScript are class-free&lt;/li&gt;
+  &lt;li&gt;The || operator can be used to fill in default values:&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot; data-lang=&quot;javascript&quot;&gt;&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;middle&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;stooge&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;middle-name&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;||&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;(none)&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;status&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;flight&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;status&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;||&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;unknown&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Objects are passed around by reference. They are never copied:&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot; data-lang=&quot;javascript&quot;&gt;&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;x&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;stooge&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;nickname&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;Curly&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;nick&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;stooge&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;nickname&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;c1&quot;&gt;// nick is &amp;#39;Curly&amp;#39; because x and stooge&lt;/span&gt;
+    &lt;span class=&quot;c1&quot;&gt;// are references to the same object&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;a&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{},&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;b&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{},&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;c&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{};&lt;/span&gt;
+    &lt;span class=&quot;c1&quot;&gt;// a, b, and c each refer to a&lt;/span&gt;
+    &lt;span class=&quot;c1&quot;&gt;// different empty object&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;a&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;b&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;c&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{};&lt;/span&gt;
+    &lt;span class=&quot;c1&quot;&gt;// a, b, and c all refer to&lt;/span&gt;
+    &lt;span class=&quot;c1&quot;&gt;// the same empty object&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;Every object is linked to a prototype object from which it can inherit properties. All objects created from object literals are linked to Object.prototype, an object that comes standard with JavaScript.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Functions in JavaScript are objects. Objects are collections of name/value pairs having a hidden link to a prototype object. Objects produced from object literals are linked to Object.prototype. Function objects are linked to Function.prototype (which is itself linked to Object.prototype). &lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Function objects are created with function literals:&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot; data-lang=&quot;javascript&quot;&gt;&lt;span class=&quot;c1&quot;&gt;// Create a variable called add and store a function&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;// in it that adds two numbers.&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;add&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;a&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;};&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;Function name is optional. When it doesn’t have a name, it is called an “anonymous function”. Above example is an anoymous function; it is just assigned to a variable but it doesn’t have a name. &lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;JS Variable Scope example: &lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot; data-lang=&quot;javascript&quot;&gt;&lt;span class=&quot;c1&quot;&gt;// Source: http://javascriptissexy.com/javascript-variable-scope-and-hoisting-explained/&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;// If you don&amp;#39;t declare your local variables with the var keyword, they are part of the global scope​&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;​&lt;/span&gt;&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;name&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;Michael Jackson&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;​&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;​&lt;/span&gt;&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;showCelebrityName&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+	&lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;​&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;​&lt;/span&gt;&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;showOrdinaryPersonName&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;	
+	&lt;span class=&quot;nx&quot;&gt;name&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;Johnny Evers&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+	&lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;showCelebrityName&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;();&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// Michael Jackson​&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;​&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;​&lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;// name is not a local variable, it simply changes the global name variable​&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;showOrdinaryPersonName&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;();&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// Johnny Evers​&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;​&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;​&lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;// The global variable is now Johnny Evers, not the celebrity name anymore​&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;showCelebrityName&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;();&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// Johnny Evers​&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;​&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;​&lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;// The solution is to declare your local variable with the var keyword​&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;​&lt;/span&gt;&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;showOrdinaryPersonName&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;	
+	&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;name&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;Johnny Evers&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// Now name is always a local variable and it will not overwrite the global variable​&lt;/span&gt;
+	&lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Curly brackets don’t start a new scope. Prettty bad if you ask me (having come from Java background).&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot; data-lang=&quot;javascript&quot;&gt;&lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;10&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;++&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+	&lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// outputs 1, 2, 3, 4, 5, 6, 7, 8, 9, 10;​&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;​&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;​&lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;// The variable i is a global variable and it is accessible in the following function with the last value it was assigned above ​&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;​&lt;/span&gt;&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;aNumber&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;​&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;​&lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;// The variable i in the aNumber function below is the global variable i that was changed in the for loop above. Its last value was 11, set just before the for loop exited:​&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;aNumber&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;  &lt;span class=&quot;c1&quot;&gt;// 11​&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Variable Hoisting: Variable &lt;em&gt;declarations&lt;/em&gt; are hoisted to the top of the scope (could be local/functional or global). Example: &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot; data-lang=&quot;javascript&quot;&gt;&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;showName&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;First Name: &amp;quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;​&lt;/span&gt;&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;name&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;Ford&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;Last Name: &amp;quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;​&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;showName&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;();&lt;/span&gt; 
+&lt;span class=&quot;err&quot;&gt;​&lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;// First Name: undefined​&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;​&lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;// Last Name: Ford​&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;​&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;​&lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;// The reason undefined prints first is because the local variable name was hoisted to the top of the function​&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;​&lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;// Which means it is this local variable that get calls the first time.​&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;​&lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;// This is how the code is actually processed by the JavaScript engine:​&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;​&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;​&lt;/span&gt;&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;showName&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+	&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// name is hoisted (note that is undefined at this point, since the assignment happens below)​&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;First Name: &amp;quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// First Name: undefined​&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;​&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;name&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;Ford&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// name is assigned a value​&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;​&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;​&lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;// now name is Ford​&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;Last Name: &amp;quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// Last Name: Ford​&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;em&gt;Function Declaration Overrides Variable Declaration When Hoisted&lt;/em&gt;&lt;/li&gt;
+  &lt;li&gt;Both function declaration and variable declarations are hoisted to the top of the containing scope. And function declaration takes precedence over variable declarations (but not over variable assignment). As is noted above, variable assignment is not hoisted, and neither is function assignment. As a reminder, this is a function assignment: var myFunction = function () {}.
+Here is a basic example to demonstrate:&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot; data-lang=&quot;javascript&quot;&gt;&lt;span class=&quot;c1&quot;&gt;// Both the variable and the function are named myName​&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;​&lt;/span&gt;&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;myName&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;&lt;span class=&quot;err&quot;&gt; &lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;​&lt;/span&gt;&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;myName&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;Rich&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;​&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;​&lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;// The function declaration overrides the variable name​&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;typeof&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;myName&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// function&lt;/span&gt;
+ &lt;span class=&quot;c1&quot;&gt;// But in this example, the variable assignment overrides the function declaration​&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;​&lt;/span&gt;&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;myName&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;Richard&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// This is the variable assignment (initialization) that overrides the function declaration.​&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;​&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;​&lt;/span&gt;&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;myName&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;Rich&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;​&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;typeof&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;myName&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// string&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;It is important to note that function expressions, such as the example below, are not hoisted.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot; data-lang=&quot;javascript&quot;&gt;&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;myName&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;Rich&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;In strict mode, an error will occur if you assign a variable a value without first declaring the variable. Always declare your variables.&lt;/li&gt;
+&lt;/ul&gt;
+
+</description>
+        <pubDate>Wed, 03 Jun 2015 00:00:00 -0400</pubDate>
+        <link>https://akarki15.github.io/javascript/good/parts/2015/06/03/Javascript's%20good%20parts.html</link>
+        <guid isPermaLink="true">https://akarki15.github.io/blog/javascript/good/parts/2015/06/03/Javascript's%20good%20parts.html</guid>
+        
+        
+        <category>javascript</category>
+        
+        <category>good</category>
+        
+        <category>parts</category>
         
       </item>
     

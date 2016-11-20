@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <!-- Niklas Buschmann 2015 MIT <http://github.com/niklasbuschmann> -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+    
+    <meta name="description" content="Attempt to jot down my thoughts">
+    <title> Method,  interface and pointers in golang › Aashish</title>
+    <link rel="canonical" href="https://akarki15.github.io/blog/go,/golang/2016/07/07/go-pointers-method.html">
+    <link href="/blog/main.css" rel="stylesheet" type="text/css">
+    <link href='//fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,200italic,300italic,400italic,600italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='//fonts.googleapis.com/css?family=Gentium+Basic:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css' rel='stylesheet' type='text/css'>
+    <link rel="alternate" type="application/rss+xml" title="Aashish &raquo; Feed" href="/blog/feed.xml">
+    <script src="//{"short_name"=>"niklasbuschmann"}.disqus.com/embed.js" async></script>
+    
+  </head>
+  <body>
+    <header>
+      <h1><a href="/blog/">Aashish</a></h1>
+      <nav>
+        <ul>
+          <li><a href="/blog/">Home</a></li><li><a href="/blog/archive.html">Archive</a></li>
+        </ul>
+      </nav>
+    </header>
+    
+    
+    <article>
+      <header>
+        <h2><a href="/go,/golang/2016/07/07/go-pointers-method.html">Method,  interface and pointers in golang</a></h2>
+        <p><time datetime="2016-07-07T00:00:00-04:00">Jul 7, 2016</time> • go, and golang</p>
+      </header>
+      <div>
+<ul>
+  <li>If a method is defined on a pointer to struct, the method can be called on a pointer to the struct type. In the example below, calling <code>ptr_s1.hello()</code> is fine since method <code>hello()</code> is defined on <code>*struct1</code>. </li>
+</ul>
+
+<blockquote>
+  <p><a href="https://play.golang.org/p/sef4NPbNmR">go play link</a></p>
+</blockquote>
+
+<div class="highlight"><pre><code class="language-go" data-lang="go"><span class="kd">type</span> <span class="nx">struct1</span> <span class="kd">struct</span> <span class="p">{</span>
+	<span class="nx">greeting</span> <span class="kt">string</span>
+<span class="p">}</span>
+
+<span class="kd">func</span> <span class="p">(</span><span class="nx">s</span> <span class="o">*</span><span class="nx">struct1</span><span class="p">)</span> <span class="nx">hello</span><span class="p">()</span> <span class="p">{</span>
+	<span class="nx">s</span><span class="p">.</span><span class="nx">greeting</span> <span class="p">=</span> <span class="s">&quot;hello&quot;</span>
+<span class="p">}</span>
+
+<span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+	<span class="nx">ptr_s1</span> <span class="o">:=</span> <span class="o">&amp;</span><span class="nx">struct1</span><span class="p">{}</span>
+	<span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;ptr_s1 is of type : %+T\n&quot;</span><span class="p">,</span> <span class="nx">ptr_s1</span><span class="p">)</span> <span class="c1">// *main.struct1</span>
+	<span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;ptr_s1.greeting: %+v\n&quot;</span><span class="p">,</span> <span class="nx">ptr_s1</span><span class="p">)</span>    <span class="c1">// &amp;{greeting:}</span>
+
+	<span class="nx">ptr_s1</span><span class="p">.</span><span class="nx">hello</span><span class="p">()</span>
+	<span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;ptr_s1.greeting: %+v\n&quot;</span><span class="p">,</span> <span class="nx">ptr_s1</span><span class="p">)</span> <span class="c1">// &amp;{greeting:hello}</span>
+	
+	<span class="nx">s1</span> <span class="o">:=</span> <span class="nx">struct1</span><span class="p">{}</span>
+	<span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;s1 is of type : %+T\n&quot;</span><span class="p">,</span> <span class="nx">s1</span><span class="p">)</span> <span class="c1">// main.struct1</span>
+	<span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;s1.greeting: %+v\n&quot;</span><span class="p">,</span> <span class="nx">s1</span><span class="p">)</span>    <span class="c1">// {greeting:}</span>
+
+	<span class="nx">s1</span><span class="p">.</span><span class="nx">hello</span><span class="p">()</span>
+	<span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;s1.greeting: %+v\n&quot;</span><span class="p">,</span> <span class="nx">s1</span><span class="p">)</span> <span class="c1">// {greeting:hello}</span>
+<span class="p">}</span></code></pre></div>
+
+<ul>
+  <li>However, method <code>hello()</code> is also callable on non pointer type <code>s1</code>. In fact, <code>struct1.greeting</code> gets populated with <code>hello</code>.</li>
+</ul>
+
+      </div>
+      
+      
+
+      <div id="disqus_thread"></div>
+      <script type="text/javascript">
+      /* * * CONFIGURATION VARIABLES * * */
+      var disqus_shortname = 'akarki';
+
+      /* * * DON'T EDIT BELOW THIS LINE * * */
+      (function() {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      })();
+      </script>
+      <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>      
+      
+    </article>
+
+    <footer>
+      <span><a href="https://akarki15.github.io">Aashish Karki</a></span>
+      <span><a href="https://github.com/akarki15"><i class="fa fa-github-square"></i></a></span>
+      <span>&copy; 2016</span>
+    </footer>
+  </body>
+</html>

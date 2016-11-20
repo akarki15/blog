@@ -6,14 +6,14 @@
     <meta charset="utf-8">
     
     <meta name="description" content="Attempt to jot down my thoughts">
-    <title>Aashish</title>
-    <link rel="canonical" href="https://akarki15.github.io/blog/index.html">
+    <title> Notes from javascript the good parts › Aashish</title>
+    <link rel="canonical" href="https://akarki15.github.io/blog/javascript/good/parts/2015/06/03/Javascript's%20good%20parts.html">
     <link href="/blog/main.css" rel="stylesheet" type="text/css">
     <link href='//fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,200italic,300italic,400italic,600italic,700italic' rel='stylesheet' type='text/css'>
     <link href='//fonts.googleapis.com/css?family=Gentium+Basic:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
     <link href='//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css' rel='stylesheet' type='text/css'>
     <link rel="alternate" type="application/rss+xml" title="Aashish &raquo; Feed" href="/blog/feed.xml">
-    
+    <script src="//{"short_name"=>"niklasbuschmann"}.disqus.com/embed.js" async></script>
     
   </head>
   <body>
@@ -27,78 +27,9 @@
     </header>
     
     
-    
     <article>
       <header>
-        <h2><a href="/blog/go,/golang/2016/07/07/go-pointers-method.html">Method,  interface and pointers in golang</a></h2>
-        <p><time datetime="2016-07-07T00:00:00-04:00">Jul 7, 2016</time> • go, and golang</p>
-      </header>
-      <div>
-<ul>
-  <li>If a method is defined on a pointer to struct, the method can be called on a pointer to the struct type. In the example below, calling <code>ptr_s1.hello()</code> is fine since method <code>hello()</code> is defined on <code>*struct1</code>. </li>
-</ul>
-
-<blockquote>
-  <p><a href="https://play.golang.org/p/sef4NPbNmR">go play link</a></p>
-</blockquote>
-
-<div class="highlight"><pre><code class="language-go" data-lang="go"><span class="kd">type</span> <span class="nx">struct1</span> <span class="kd">struct</span> <span class="p">{</span>
-	<span class="nx">greeting</span> <span class="kt">string</span>
-<span class="p">}</span>
-
-<span class="kd">func</span> <span class="p">(</span><span class="nx">s</span> <span class="o">*</span><span class="nx">struct1</span><span class="p">)</span> <span class="nx">hello</span><span class="p">()</span> <span class="p">{</span>
-	<span class="nx">s</span><span class="p">.</span><span class="nx">greeting</span> <span class="p">=</span> <span class="s">&quot;hello&quot;</span>
-<span class="p">}</span>
-
-<span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
-	<span class="nx">ptr_s1</span> <span class="o">:=</span> <span class="o">&amp;</span><span class="nx">struct1</span><span class="p">{}</span>
-	<span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;ptr_s1 is of type : %+T\n&quot;</span><span class="p">,</span> <span class="nx">ptr_s1</span><span class="p">)</span> <span class="c1">// *main.struct1</span>
-	<span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;ptr_s1.greeting: %+v\n&quot;</span><span class="p">,</span> <span class="nx">ptr_s1</span><span class="p">)</span>    <span class="c1">// &amp;{greeting:}</span>
-
-	<span class="nx">ptr_s1</span><span class="p">.</span><span class="nx">hello</span><span class="p">()</span>
-	<span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;ptr_s1.greeting: %+v\n&quot;</span><span class="p">,</span> <span class="nx">ptr_s1</span><span class="p">)</span> <span class="c1">// &amp;{greeting:hello}</span>
-	
-	<span class="nx">s1</span> <span class="o">:=</span> <span class="nx">struct1</span><span class="p">{}</span>
-	<span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;s1 is of type : %+T\n&quot;</span><span class="p">,</span> <span class="nx">s1</span><span class="p">)</span> <span class="c1">// main.struct1</span>
-	<span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;s1.greeting: %+v\n&quot;</span><span class="p">,</span> <span class="nx">s1</span><span class="p">)</span>    <span class="c1">// {greeting:}</span>
-
-	<span class="nx">s1</span><span class="p">.</span><span class="nx">hello</span><span class="p">()</span>
-	<span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;s1.greeting: %+v\n&quot;</span><span class="p">,</span> <span class="nx">s1</span><span class="p">)</span> <span class="c1">// {greeting:hello}</span>
-<span class="p">}</span></code></pre></div>
-
-<ul>
-  <li>However, method <code>hello()</code> is also callable on non pointer type <code>s1</code>. In fact, <code>struct1.greeting</code> gets populated with <code>hello</code>.</li>
-</ul>
-
-
-      </div>
-      <footer>
-        <p><a href="/blog/go,/golang/2016/07/07/go-pointers-method.html">read more &raquo;</a></p>
-      </footer>
-    </article>
-    
-    <article>
-      <header>
-        <h2><a href="/blog/books/2015/07/23/oldbooks.html">Why do we like reading old books?</a></h2>
-        <p><time datetime="2015-07-23T00:00:00-04:00">Jul 23, 2015</time> • books</p>
-      </header>
-      <div>
-<p>There is a strange timelessness in reading an old book because it is a physical piece of history. A book carries stories about not only the protagonists and antagonists but also about the countless readers who read the book. In a way, the readers themselves become part of the “plot” that the book carries with it.</p>
-
-<p>The crease at the end of the chapters add another layer of history to the original plot. Holding an old book is almost like meeting grandma as a kid. She is sweet and innocent like kids; she has the same childishness, and carefreeness as we once did as kids. But contrasting to her demeanour is her body - it is covered with stretched and wrinkled skin; it bears witness to the countless lives and stories it was once part of. Similar to our grandma, an old book, too, bears witness to the countless lives it has been part of. The spice-stained pages, the tear wrinkled edges and the sun-dried fluffy pages bear witness to both important and frivolous events of a life that has passed. The person who lived that life may be alive or long dead but his remnants continue to live and be part of other reader’s lives through books. If the person is alive, does he ever think about these spice-smeared pages? Does he remember how his tears shriveled these edges? Or has he forgotten these pages and also the events that caused the deformation? </p>
-
-<p>Sometimes I recur these ideas on myself. Have I forgotten important events of my life? Have the remnants of those events been part of someone else’s life or have they all vanished? Will I live in people’s mind as a single person or will I disintegrate into little unidentifiable cues in old shabby books?</p>
-
-
-      </div>
-      <footer>
-        <p><a href="/blog/books/2015/07/23/oldbooks.html">read more &raquo;</a></p>
-      </footer>
-    </article>
-    
-    <article>
-      <header>
-        <h2><a href="/blog/javascript/good/parts/2015/06/03/Javascript's%20good%20parts.html">Notes from javascript the good parts</a></h2>
+        <h2><a href="/javascript/good/parts/2015/06/03/Javascript's%20good%20parts.html">Notes from javascript the good parts</a></h2>
         <p><time datetime="2015-06-03T00:00:00-04:00">Jun 3, 2015</time> • javascript, good, and parts</p>
       </header>
       <div>
@@ -270,102 +201,24 @@ Here is a basic example to demonstrate:</li>
 
 
       </div>
-      <footer>
-        <p><a href="/blog/javascript/good/parts/2015/06/03/Javascript's%20good%20parts.html">read more &raquo;</a></p>
-      </footer>
+      
+      
+
+      <div id="disqus_thread"></div>
+      <script type="text/javascript">
+      /* * * CONFIGURATION VARIABLES * * */
+      var disqus_shortname = 'akarki';
+
+      /* * * DON'T EDIT BELOW THIS LINE * * */
+      (function() {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      })();
+      </script>
+      <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>      
+      
     </article>
-    
-    <article>
-      <header>
-        <h2><a href="/blog/unix/shell/shellpower/2015/04/01/unix-crash-course.html">Unix crashcourse</a></h2>
-        <p><time datetime="2015-04-01T00:00:00-04:00">Apr 1, 2015</time> • unix, shell, and shellpower</p>
-      </header>
-      <div>
-<p>Following is a list of basic shell commands for Unix:</p>
-
-<p><strong>ls</strong></p>
-
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">ls -l</code></pre></div>
-
-<p>Outputs </p>
-
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">drwxr-x---   <span class="m">2</span> akarki15 akarki15       <span class="m">6</span> Jun  <span class="m">2</span>  <span class="m">2011</span> bin
--rw-r-----   <span class="m">1</span> akarki15 akarki15 <span class="m">4194304</span> Apr <span class="m">22</span>  <span class="m">2014</span> block-device.data
-drwxrwxr-x  <span class="m">17</span> akarki15 akarki15    <span class="m">4096</span> Feb <span class="m">28</span>  <span class="m">2014</span> cs111
-drwxr-x---  <span class="m">19</span> akarki15 akarki15    <span class="m">4096</span> May <span class="m">28</span>  <span class="m">2014</span> cs112
-drwxr-x---   <span class="m">6</span> akarki15 akarki15     <span class="m">147</span> May <span class="m">10</span>  <span class="m">2014</span> cs-261
-drwxr-x---   <span class="m">3</span> akarki15 akarki15      <span class="m">18</span> May  <span class="m">1</span>  <span class="m">2013</span> CS281</code></pre></div>
-
-<ul>
-  <li>First column of the output is showing access rights
-    <ol>
-      <li>rwx: read, write, executable</li>
-      <li>Three sets of them for user, others in the group, and everyone</li>
-    </ol>
-  </li>
-</ul>
-
-<p><strong>How do you change the access settings?</strong></p>
-
-<ul>
-  <li><code>chmod u+w</code> will give <em>write</em> rights to <em>users</em> in the group</li>
-  <li><code>chmod o+x</code> will give <em>executable</em> rights to <em>others</em> in the group</li>
-  <li><code>chmod a-r</code> will take away <em>read</em> rights from <em>all</em> in the group</li>
-</ul>
-
-
-      </div>
-      <footer>
-        <p><a href="/blog/unix/shell/shellpower/2015/04/01/unix-crash-course.html">read more &raquo;</a></p>
-      </footer>
-    </article>
-    
-    <article>
-      <header>
-        <h2><a href="/blog/death,/contemplation/2015/03/30/death.html">Why does it hurt when someone dies?</a></h2>
-        <p><time datetime="2015-03-30T00:00:00-04:00">Mar 30, 2015</time> • death, and contemplation</p>
-      </header>
-      <div>
-<p>I received a call from my sister today who told me that our beloved pet dog “kaale” died today. For a dog, she lived a long life - she was 15 years old this year. I was grieved by the news although I had been in preparing myself to bear the inevitable news of her (Kaale) since returning from my trip to Nepal. She looked frail and thin, ate very little and didn’t move around much. I shudder even now thinking how <em>thin</em> she had gotten- I could feel her spine sticking out of her back and her ribs protruding out of her belly. </p>
-
-<p>I tried to console my sister who was on tears over the phone. I found it meaningful to talk about how important role Kaale had played in our lives- especially in our childhood. She had been with us, and around us throughout as we were growing up. My sister brought Kaale in the little metallic basket of her newly purchased ladybird bike while she was in her 4th grade. She brought her all the way from the bazaar, from our aunt’s big 4-storied house. I can’t remember how young kaale was at that time, but I am fairly confident that she was under a month old. I think my mom was surprised that kaale didn’t die during that bike trip considering the ladybird bike did not have any suspension whatsoever and my sister had to travel around 500 meters of graveled road along the way. I still remember playing with kaale in the front porch- as I fluttered a piece of cloth and ran around with it in the front porch and the verendah, kaale would chase it and try to bite it. I vividly recollect teaching her how to stand on her hind legs and do a “namaste”. Although her face would twitch a little indicating the discomfort she was having, she would silently obey me. I was a proud elder brother who had taught kaale a trick. I also remember that one time during my 8th grade when my sister and I called the local radio station and told the hosts that we wanted to wish Kaale her 4th birthday. We thought it was ingenious and extremely hilarious. I think we have a recording of that broadcast somewhere in our old PC/phone. </p>
-
-<p>As I was recollecting the memory of Kaale with my sister, I realized that it is the memory of the dead that haunts us. Our loved ones embody the times we’ve had together- kaale embodied our childhood, our innocence, our glee and our mischievousness. Last winter when I was with Kaale, I did not see the crooked old body, breaking apart like the rusted 15-year old ladybird on the roof of our house- battered by the rain, the heat and the wind of sub-tropical hill. Instead, I saw the memories we’d created, and the times we’d shared. As I saw Kaale basking in the sun last winter, looking coldly and almost angrily at the jumping little dog (we had recently got another dog), I remembered W.B. Yeat’s poem. </p>
-
-<blockquote>
-  <p>THE LAMENTATION OF THE OLD PENSIONER</p>
-
-  <p>Although I shelter from the rain
-Under a broken tree
-My chair was nearest to the fire
-In every company
-That talked of love or politics,
-Ere Time transfigured me.</p>
-
-  <p>Though lads are making pikes again
-For some conspiracy,
-And crazy rascals rage their fill
-At human tyranny,
-My contemplations are of Time
-That has transfigured me.</p>
-
-  <p>There’s not a woman turns her face
-Upon a broken tree,
-And yet the beauties that I loved
-Are in my memory;
-I spit into the face of Time
-That has transfigured me</p>
-</blockquote>
-
-<p>And when I heard that Kaale died, I felt that a part of my childhood had died- I felt little pigeonhole that is Kaale through which I could cherish my memories was closed. Although I can’t imagine Kaale’s suffering while she was dying, I was kind of glad that she was ridden of the bitterness that had filled her life- how time had transfigured her. She who used to be more agile, more talented than that little prick (the dog) who constantly teases her, was now rendered so ugly and helpless by time. In a way, my own childhood and my memories were being mocked by that little prick. I am glad that Kaale does not have to endure the bitterness and the pain of old age anymore. But at the same time, my heart is utterly broken because with Kaale, a part of my childhood just died. </p>
-
-
-      </div>
-      <footer>
-        <p><a href="/blog/death,/contemplation/2015/03/30/death.html">read more &raquo;</a></p>
-      </footer>
-    </article>
-    
 
     <footer>
       <span><a href="https://akarki15.github.io">Aashish Karki</a></span>
